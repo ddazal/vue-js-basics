@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0;
+    outline: none;
+}
+
+html,
+body {
+    background: #f2f2f2;
+    box-sizing: border-box;
+    display: table;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    height: 100%;
+    width: 100%;
+}
+
+#app {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.container {
+    max-width: 90%;
+    margin: 5% auto;
+}
+
+ul {
+    background: #fefefe;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .2);
+    display: block;
+    font-size: 1.3rem;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    padding: 10px 20px;
+}
+
+li:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.phrase-text {
+    margin-bottom: 5px;
+}
+
+.phrase-author {
+    color: #323233;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+}
+
+.phrase-votes {
+    background: #ffa8a8;
+    border-radius: 5px;
+    border: none;
+    color: #3b1313;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.total-votes {
+  padding: 10px 20px;
+  font-size: 2.5rem
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 60%;
+    }
+    li {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto;
+        align-items: center;
+    }
+    .total-votes {
+        text-align: right
+    }
+}

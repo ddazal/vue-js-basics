@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue simple poll</title>
+    <link rel="stylesheet" href="../poll.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <ul>
+                <li v-for="phrase in phrases">
+                    <div class="phrase-info">
+                        <p class="phrase-text">{{ phrase.text }}</p>
+                        <small class="phrase-author">{{ phrase.author }}</small>
+                    </div>
+                    <button class="phrase-votes" @click="vote(phrase)">{{ phrase.votes }} 😠</button>
+                </li>
+            </ul>
+            <p class="total-votes">Total: {{ total }} </p>
+        </div>
+    </div>
+    <script src="../../vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                phrases: [
+                    {
+                        text: 'Todos sabemos que en Colombia no hay obrita sin serruchito.',
+                        author: 'Fernando Londoño Hoyos',
+                        votes: 0
+                    },
+                    {
+                        text: 'No permitiré clientelas ni corrupción en mi administración.',
+                        author: 'Samuel Moreno Rojas',
+                        votes: 0
+                    },
+                    {
+                        text: 'Al contralor lo puedo controlar yo.',
+                        author: 'Germán Olano',
+                        votes: 0
+                    },
+                    {
+                        text: 'La plata que uno le meta al Chocó es como meterle un perfume a un bollo.',
+                        author: 'Rodrigo Mesa Cadavid',
+                        votes: 0
+                    },
+                    {
+                        text: 'El salario mínimo en Colombia es ridículamente alto.',
+                        author: 'Alberto Carrasquilla',
+                        votes: 0
+                    }
+                ]
+            },
+            computed: {
+                total () {
+                    return this.phrases.reduce((a, b) => a + b.votes, 0)
+                }
+            },
+            methods: {
+                vote (phrase) {
+                    phrase.votes++
+                }
+            }
+        })
+    </script>
+</body>
+</html>
