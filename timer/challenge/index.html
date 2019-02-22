@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Simple Timer</title>
+    <link rel="stylesheet" href="../timer.css">
+</head>
+<body>
+    <div id="app">
+        <p id="count">{{ counter }}</p>
+        <p>
+            <button @click="start" v-if="!counting">{{ buttonMessage }}</button>
+            <button @click="pause" v-if="counting">Pausar</button>
+            <button @click="restart" v-if="canRestart" class="flat">Reiniciar</button>
+        </p>
+    </div>
+    <script src="../../vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                counter: 0,
+                counting: false,
+                timer: undefined
+            },
+            computed: {
+                buttonMessage () {
+                return this.counter === 0
+                    ? 'Iniciar'
+                : 'Reanudar'
+                },
+                canRestart () {
+                return this.counter > 0 && !this.counting
+                }
+            },
+            methods: {
+                plusOne () {
+                this.counter++
+                },
+                start () {
+                this.counting = true
+                this.timer = setInterval(this.plusOne, 500)
+                },
+                pause () {
+                this.counting = false
+                clearInterval(this.timer)
+                },
+                restart () {
+                this.counter = 0
+                }
+            }
+        })
+    </script>
+</body>
+</html>
